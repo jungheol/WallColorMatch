@@ -353,19 +353,19 @@ MonoBehaviour:
   currentLevel: 4
   colors:
   - serializedVersion: 2
-    rgba: 255
+    rgba: 4278190335
   - serializedVersion: 2
-    rgba: 41727
+    rgba: 4278231807
   - serializedVersion: 2
-    rgba: 61183
+    rgba: 4278251263
   - serializedVersion: 2
-    rgba: 65291
+    rgba: 4278255371
   - serializedVersion: 2
-    rgba: 16732672
+    rgba: 4294922752
   - serializedVersion: 2
-    rgba: 8650760
+    rgba: 4286840840
   - serializedVersion: 2
-    rgba: 16711814
+    rgba: 4294901894
   player: {fileID: 1775929340}
 --- !u!4 &570297146
 Transform:
