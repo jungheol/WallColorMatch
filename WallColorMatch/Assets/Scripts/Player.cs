@@ -9,9 +9,11 @@ public class Player : MonoBehaviour {
     public float moveSpeed = 5f;
 
     private Rigidbody2D rigid;
+    private SpriteRenderer spriteRenderer;
 
     private void Awake() {
         rigid = GetComponent<Rigidbody2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
         rigid.velocity = new Vector2(moveSpeed, jumpForce);
     }
 
@@ -32,8 +34,18 @@ public class Player : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.CompareTag("Wall")) {
-            ReverseX();
-            GameManager.instance.CollisionWall();
+            if (other.GetComponent<SpriteRenderer>().color != spriteRenderer.color) {
+                PlayerDie();
+            } else {
+                ReverseX();
+                GameManager.instance.CollisionWall();
+            }
+        } else if (other.CompareTag("DeathZone")) {
+            PlayerDie();
         }
+    }
+
+    private void PlayerDie() {
+        gameObject.SetActive(false);
     }
 }
