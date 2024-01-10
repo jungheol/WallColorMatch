@@ -11,11 +11,15 @@ public class GameManager : MonoBehaviour {
     public Transform rightWalls;
 
     public int currentLevel = 4;
+    private int maxLevel = 7;
+    private int currentScore = 0;
+    
     public List<Color32> colors;
     public Player player;
     private float wallMaxScaleY = 20;
 
     private int[] wallCount = new int[7] { 1, 2, 3, 4, 5, 6, 7 };
+    private int[] levelUpScore = new int[7] { 1, 2, 4, 8, 16, 32, 64 };
 
     private void Awake() {
         instance = this;
@@ -74,6 +78,14 @@ public class GameManager : MonoBehaviour {
     }
 
     public void CollisionWall() {
+        currentScore++;
+
+        if (currentLevel < maxLevel && levelUpScore[currentLevel] < currentScore) {
+            currentLevel++;
+            
+            SpawnWalls();
+        }
+        
         SetColors();
     }
 }
