@@ -31,6 +31,9 @@ public class Player : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.CompareTag("Wall")) ReverseX();
+        if (other.CompareTag("Wall")) {
+            ReverseX();
+            GameManager.instance.CollisionWall();
+        }
     }
 }
