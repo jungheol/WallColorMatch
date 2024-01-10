@@ -136,7 +136,7 @@ GameObject:
   - component: {fileID: 290309820}
   m_Layer: 0
   m_Name: Top
-  m_TagString: Untagged
+  m_TagString: DeathZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -350,7 +350,7 @@ MonoBehaviour:
   wallPrefabs: {fileID: 1165894998173645144, guid: 9266fa4b08f7f426b92ea7d59aec6236, type: 3}
   leftWalls: {fileID: 2132752982}
   rightWalls: {fileID: 2101267336}
-  currentLevel: 4
+  currentLevel: 1
   colors:
   - serializedVersion: 2
     rgba: 4278190335
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 570907812}
   m_Layer: 0
   m_Name: Bottom
-  m_TagString: Untagged
+  m_TagString: DeathZone
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
