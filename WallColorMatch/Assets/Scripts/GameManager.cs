@@ -9,12 +9,15 @@ public class GameManager : MonoBehaviour {
     public Transform rightWalls;
 
     public int currentLevel = 4;
+    public List<Color32> colors;
+    public Player player;
     private float wallMaxScaleY = 20;
 
     private int[] wallCount = new int[7] { 1, 2, 3, 4, 5, 6, 7 };
     
     void Start() {
         SpawnWalls();
+        SetColors();
     }
 
     private void SpawnWalls() {
@@ -38,5 +41,29 @@ public class GameManager : MonoBehaviour {
             CommonUtil.SetTransform(leftWalls.GetChild(i), position, scale);
             CommonUtil.SetTransform(rightWalls.GetChild(i), position, scale);
         }
+    }
+
+    private void SetColors() {
+        var tempColors = new List<Color32>();
+
+        int[] indexs = CommonUtil.RandomNumbers(colors.Count, wallCount[currentLevel - 1]);
+        for (int i = 0; i < indexs.Length; i++) {
+            tempColors.Add(colors[indexs[i]]);
+        }
+
+        int colorCount = tempColors.Count;
+
+        int[] leftWallIndexs = CommonUtil.RandomNumbers(colorCount, colorCount);
+        for (int i = 0; i < leftWalls.childCount; i++) {
+            leftWalls.GetChild(i).GetComponent<SpriteRenderer>().color = tempColors[leftWallIndexs[i]];
+        }
+        
+        int[] rightWallIndexs = CommonUtil.RandomNumbers(colorCount, colorCount);
+        for (int i = 0; i < rightWalls.childCount; i++) {
+            rightWalls.GetChild(i).GetComponent<SpriteRenderer>().color = tempColors[rightWallIndexs[i]];
+        }
+
+        int index = Random.Range(0, tempColors.Count);
+        player.GetComponent<SpriteRenderer>().color = tempColors[index];
     }
 }
