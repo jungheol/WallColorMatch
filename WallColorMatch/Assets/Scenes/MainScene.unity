@@ -351,6 +351,22 @@ MonoBehaviour:
   leftWalls: {fileID: 2132752982}
   rightWalls: {fileID: 2101267336}
   currentLevel: 4
+  colors:
+  - serializedVersion: 2
+    rgba: 255
+  - serializedVersion: 2
+    rgba: 41727
+  - serializedVersion: 2
+    rgba: 61183
+  - serializedVersion: 2
+    rgba: 65291
+  - serializedVersion: 2
+    rgba: 16732672
+  - serializedVersion: 2
+    rgba: 8650760
+  - serializedVersion: 2
+    rgba: 16711814
+  player: {fileID: 1775929340}
 --- !u!4 &570297146
 Transform:
   m_ObjectHideFlags: 0
