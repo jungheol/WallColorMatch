@@ -34,15 +34,9 @@ public class GameManager : MonoBehaviour {
 
             Vector3 position = Vector3.zero;
             position.y = scale.y * (numOfWalls / 2 - i) - (numOfWalls % 2 == 0 ? scale.y / 2 : 0);
-            
-            SetTransform(leftWalls.GetChild(i), position, scale);
-            SetTransform(rightWalls.GetChild(i), position, scale);
+
+            CommonUtil.SetTransform(leftWalls.GetChild(i), position, scale);
+            CommonUtil.SetTransform(rightWalls.GetChild(i), position, scale);
         }
     }
-
-    private void SetTransform(Transform tr, Vector3 position, Vector3 scale) {
-        tr.localPosition = position;
-        tr.localScale = scale;
-    }
-    
 }
