@@ -1,20 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
 
+    public static GameManager instance;
     public Transform wallPrefabs;
     public Transform leftWalls;
     public Transform rightWalls;
 
     public int currentLevel = 4;
+    private int maxLevel = 7;
+    private int currentScore = 0;
+    
     public List<Color32> colors;
     public Player player;
     private float wallMaxScaleY = 20;
 
     private int[] wallCount = new int[7] { 1, 2, 3, 4, 5, 6, 7 };
-    
+    private int[] levelUpScore = new int[7] { 1, 2, 4, 8, 16, 32, 64 };
+
+    private void Awake() {
+        instance = this;
+    }
+
     void Start() {
         SpawnWalls();
         SetColors();
@@ -65,5 +75,17 @@ public class GameManager : MonoBehaviour {
 
         int index = Random.Range(0, tempColors.Count);
         player.GetComponent<SpriteRenderer>().color = tempColors[index];
+    }
+
+    public void CollisionWall() {
+        currentScore++;
+
+        if (currentLevel < maxLevel && levelUpScore[currentLevel] < currentScore) {
+            currentLevel++;
+            
+            SpawnWalls();
+        }
+        
+        SetColors();
     }
 }
