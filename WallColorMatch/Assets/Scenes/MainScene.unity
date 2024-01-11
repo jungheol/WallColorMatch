@@ -631,6 +631,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   jumpForce: 10
   moveSpeed: 5
+  dieParticle: {fileID: 680306629619354714, guid: e155ff4b24e1c44a3ba6decc00c98a1a, type: 3}
 --- !u!1 &1917717944
 GameObject:
   m_ObjectHideFlags: 0

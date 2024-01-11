@@ -7,6 +7,7 @@ public class Player : MonoBehaviour {
     
     public float jumpForce = 10f;
     public float moveSpeed = 5f;
+    public GameObject dieParticle;
 
     private Rigidbody2D rigid;
     private SpriteRenderer spriteRenderer;
@@ -47,5 +48,6 @@ public class Player : MonoBehaviour {
 
     private void PlayerDie() {
         gameObject.SetActive(false);
+        Instantiate(dieParticle, transform.position, Quaternion.identity);
     }
 }
