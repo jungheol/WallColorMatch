@@ -54,7 +54,6 @@ public class Player : MonoBehaviour {
 
     private void Jump() {
         rigid.velocity = new Vector2(rigid.velocity.x, jumpForce);
-        Debug.Log("jump");
     }
 
     private void ReverseX() {

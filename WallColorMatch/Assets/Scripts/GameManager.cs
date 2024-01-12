@@ -105,6 +105,7 @@ public class GameManager : MonoBehaviour {
     public void GameOver() {
         StartCoroutine(GameOverProcess());
     }
+    
     IEnumerator GameOverProcess() {
         if (currentScore > PlayerPrefs.GetInt("BestScore")) {
             PlayerPrefs.SetInt("BestScore", currentScore);
