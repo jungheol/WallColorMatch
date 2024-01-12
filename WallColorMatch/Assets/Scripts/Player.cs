@@ -68,11 +68,20 @@ public class Player : MonoBehaviour {
                 PlayerDie();
             } else {
                 ReverseX();
+                StartCoroutine(CollisionDelay());
                 GameManager.instance.CollisionWall();
             }
         } else if (other.CompareTag("DeathZone")) {
             PlayerDie();
         }
+    }
+
+    IEnumerator CollisionDelay() {
+        coll.enabled = false;
+
+        yield return new WaitForSeconds(0.1f);
+
+        coll.enabled = true;
     }
 
     private void PlayerDie() {
