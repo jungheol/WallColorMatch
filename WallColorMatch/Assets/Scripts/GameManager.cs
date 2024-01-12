@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
@@ -102,6 +103,21 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver() {
+        StartCoroutine(GameOverProcess());
+    }
+    IEnumerator GameOverProcess() {
+        if (currentScore > PlayerPrefs.GetInt("BestScore")) {
+            PlayerPrefs.SetInt("BestScore", currentScore);
+        }
         
+        uiManager.GameOver();
+
+        while (true) {
+            if (Input.GetMouseButtonDown(0)) {
+                SceneManager.LoadScene(0);
+            }
+
+            yield return null;
+        }
     }
 }

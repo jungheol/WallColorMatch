@@ -7,7 +7,9 @@ public class UIManager : MonoBehaviour {
 
     public GameObject mainPanel;
     public GameObject gamePanel;
+    public GameObject retryPanel;
     public Text gameScore;
+    public Text bestScore;
     
     public void GameStart() {
         mainPanel.SetActive(false);
@@ -20,5 +22,10 @@ public class UIManager : MonoBehaviour {
         } else {
             gameScore.text = score.ToString();
         }
+    }
+
+    public void GameOver() {
+        retryPanel.SetActive(true);
+        bestScore.text = $"Best Score : {PlayerPrefs.GetInt("BestScore")}";
     }
 }

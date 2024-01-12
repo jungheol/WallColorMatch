@@ -87,5 +87,6 @@ public class Player : MonoBehaviour {
     private void PlayerDie() {
         gameObject.SetActive(false);
         Instantiate(dieParticle, transform.position, Quaternion.identity);
+        GameManager.instance.GameOver();
     }
 }
