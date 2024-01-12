@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 public class GameManager : MonoBehaviour {
 
     public static GameManager instance;
+    public UIManager uiManager;
     public Transform wallPrefabs;
     public Transform leftWalls;
     public Transform rightWalls;
@@ -23,11 +24,13 @@ public class GameManager : MonoBehaviour {
 
     private void Awake() {
         instance = this;
-    }
-
-    void Start() {
         SpawnWalls();
         SetColors();
+    }
+
+    public void GameStart() {
+        uiManager.GameStart();
+        player.GameStart();
     }
 
     private void SpawnWalls() {
@@ -79,6 +82,7 @@ public class GameManager : MonoBehaviour {
 
     public void CollisionWall() {
         currentScore++;
+        uiManager.UpdateScore(currentScore);
 
         if (currentLevel < maxLevel && levelUpScore[currentLevel] < currentScore) {
             currentLevel++;
@@ -87,5 +91,13 @@ public class GameManager : MonoBehaviour {
         }
         
         SetColors();
+    }
+
+    public void GameOver() {
+        if (currentScore > PlayerPrefs.GetInt("BestScore")) {
+            PlayerPrefs.SetInt("BestScore", currentScore);
+        }
+
+        uiManager.GameOver();
     }
 }
