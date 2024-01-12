@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -38,17 +37,11 @@ public class Player : MonoBehaviour {
         rigid.isKinematic = false;
         rigid.velocity = new Vector2(moveSpeed, jumpForce);
         isClick = true;
-
-        StartCoroutine(UpdateInput());
     }
 
-    IEnumerator UpdateInput() {
-        while (true) {
-            if (Input.GetMouseButtonDown(0)) {
-                Jump();
-            }
-            
-            yield return null;
+    private void Update() {
+        if (Input.GetMouseButtonDown(0)) {
+            Jump();
         }
     }
 

@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour {
@@ -29,17 +28,9 @@ public class GameManager : MonoBehaviour {
         SetColors();
     }
 
-    IEnumerator Start() {
-        while (true) {
-            if (Input.GetMouseButtonDown(0)) {
-                uiManager.GameStart();
-                player.GameStart();
-                
-                yield break;
-            }
-
-            yield return null;
-        }
+    public void GameStart() {
+        uiManager.GameStart();
+        player.GameStart();
     }
 
     private void SpawnWalls() {
@@ -103,22 +94,10 @@ public class GameManager : MonoBehaviour {
     }
 
     public void GameOver() {
-        StartCoroutine(GameOverProcess());
-    }
-    
-    IEnumerator GameOverProcess() {
         if (currentScore > PlayerPrefs.GetInt("BestScore")) {
             PlayerPrefs.SetInt("BestScore", currentScore);
         }
-        
+
         uiManager.GameOver();
-
-        while (true) {
-            if (Input.GetMouseButtonDown(0)) {
-                SceneManager.LoadScene(0);
-            }
-
-            yield return null;
-        }
     }
 }
